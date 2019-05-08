@@ -1,0 +1,47 @@
+﻿@model IEnumerable<KitapShop.Models.Sepet>
+@{
+    ViewBag.Title = "sepet";
+    Layout = "~/Views/Shared/_anaLayout.cshtml";
+}
+
+<section id="newsSection">
+    <div class="container-fluid" style="background-color:#ffffff">
+        <div style="margin-left:10%;">
+            <a href="~/Home/Index"><span><b style="text-decoration:underline;">Anasayfa</b></span></a>
+            <span>-></span>
+            <a href="~/Home/sepet"><span><b style="text-decoration:underline;">Sepetim</b></span></a>
+        </div>
+        <div class="panel panel-success" style="width:80%;margin-left:10%">
+            <div class="panel-heading"><h2>SEPETIM</h2></div>
+            @{
+                foreach (var eleman in Model)
+                {
+                    <div class="panel-body">
+                        <form name="sepet" method="get" style="float:left;padding-right:10px;">
+                            <div class="form-group">
+                                <input type="checkbox" />
+                            </div>
+                        </form>
+                        @{ 
+                            var base64 = Convert.ToBase64String(eleman.Urunler.Foto);
+                            var imgsrc = string.Format("data:image/png;base64,{0}", base64);
+                        }
+                        <img class="img-rounded" style="float:left;" src="@imgsrc" width="50px;" height="50px;" />
+                        <div style="float:left;"><h4>@eleman.Urunler.Ad - @eleman.Urunler.Yazar</h4></div>
+                        <form name="sepet" method="get" style="float:left;">
+                            <div class="form-group" style="margin-left:50%;margin-top:10px;">
+                                <input type="number" min="1" max="9" />
+                            </div>
+                        </form>
+                        <div style="margin-left:90%;"><h4>@eleman.Urunler.Fiyat TL</h4></div>
+                    </div>
+                    <hr />
+                }
+            }
+            
+        </div>
+        <label style="margin-left:75%;"><h4>TOPLAM: @Model.Sum(x=>x.Urunler.Fiyat) TL</h4></label>
+        <input type="button" class="btn btn-success" style="margin-left:80%;" value="Satın Al" />
+        <input type="button" class="btn btn-danger" style="margin-left:80%;" value="Sil" />
+    </div>
+</section>

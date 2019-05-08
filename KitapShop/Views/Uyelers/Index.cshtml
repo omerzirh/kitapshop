@@ -1,0 +1,84 @@
+﻿@model IEnumerable<KitapShop.Models.Uyeler>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Yeni Ekle", "Ekle")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Ad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Soyad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nick)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Parola)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Foto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rol)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Soyad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nick)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Parola)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tel)
+        </td>
+        <td>
+            @{
+                if (item.Foto != null)
+                {
+                    var base64 = Convert.ToBase64String(item.Foto);
+                    var imgsrc = string.Format("data:image/png;base64,{0}", base64);
+                    <img src="@imgsrc" width="25px;" height="20px;" alt="">
+                }
+             }
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id=item.u_ID }) |
+            @Html.ActionLink("Detaylar", "Details", new { id=item.u_ID }) |
+            @Html.ActionLink("Sil", "Delete", new { id=item.u_ID })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rol)
+        </td>
+    </tr>
+}
+
+</table>

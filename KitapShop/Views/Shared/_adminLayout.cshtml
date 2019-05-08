@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>KitapShop</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/font.css" rel="stylesheet" />
+    <link href="~/Content/theme.css" rel="stylesheet" />
+    <link href="~/Content/giris.css" rel="stylesheet" />
+</head>
+<body style="background-color:#f5f5f5">
+    <nav class="navbar navbar-inverse ">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <img src="~/img/logocum.png" width="50px" height="50px" style="margin-right:100px;" />
+                <a class="navbar-brand" href="~/Home/Index">KİTAPSHOP</a>
+            </div>
+            <div class="collapse navbar-collapse right" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Anasayfa", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Urunler", "Index", "Urunlers")</li>
+                    <li>@Html.ActionLink("Yorumlar", "Index", "Yorumlars")</li>
+                    <li>@Html.ActionLink("Kullanıcılar", "Index", "Uyelers")</li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a>Hoşgeldin @Session["Kid"].ToString() !</a></li>
+                    <li><a href="~/Home/cikis"><span style="color:#ffd800;" class="glyphicon glyphicon-log-out"></span> <b style="color:#ffd800;"> Çıkış</b></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        @RenderBody()
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

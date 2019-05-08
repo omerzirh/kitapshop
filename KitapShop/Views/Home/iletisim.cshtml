@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "iletisim";
+    Layout = "~/Views/Shared/_anaLayout.cshtml";
+}
+<section id="newsSection">
+    <div class="container-fluid">
+        <div class="col-md-3 col-sm-12">
+
+            <h4>Merkez Ofis</h4>
+            <hr />
+            Adres: Esentepe Mahallesi, Büyükdere Caddesi, No:201
+            Levent Loft A Blok D:119 P.K. 34734 Şişli/İstanbul
+            <br />
+            Telefon: (0212) 279 79 81<br />
+            E-Posta: info@kitapshop.com
+            <br />
+            <br />
+            <hr4>Çalışma Saatleri</hr4>
+            <hr />
+            Pazartesi – Cuma: 09.00 – 18.00
+            <br />Cumartesi – Pazar: Kapalı
+        </div>
+        <div class="col-md-8 col-sm-12" style="border-left:solid 1px gray">
+            <p>
+                Bizimle İletişime Geçin!
+                <br />
+                Aklınıza takılan her türlü soru ve hizmetlerimizle ilgili her konu için bizimle iletişime geçebilirsiniz. Mesai saatleri dışında gönderdiğiniz mesajlarınıza, ilgili birimlerimiz tarafından en kısa sürede dönüş yapılacaktır.
+            </p>
+            <h3>İLETİŞİM FORMU</h3>
+            <form name="iletisimForm" method="post" action="gonder.php">
+                <div class="form-group">
+                    <label for="isim">Adınız ve Soyadınız:</label>
+                    <input name="isim" type="text" class="form-control" id="isim" placeholder="Ad Soyad">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Adresiniz</label>
+                    <input name="email" type="text" class="form-control" id="email" placeholder="ornek@ornek.com">
+                </div>
+                <div class="form-group">
+                    <label for="telefon">Telefon Numaranız</label>
+                    <input name="telefon" type="number" class="form-control" id="telefon" placeholder="+90 512 325 6464">
+                </div>
+                <div class="form-group">
+                    <label for="telefon">Konum</label>
+                    <input name="telefon" type="text" class="form-control" id="konum" placeholder="Rize">
+                </div>
+                <div class="form-group">
+                    <label for="konu">Konu</label>
+                    <select class="form-control" id="konu">
+                        <option>Görüş/Öneri/Şikayet</option>
+                        <option>Teknik Destek</option>
+                        <option>İade</option>
+                        <option>Diğer</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="mesaj">Mesajınız:</label>
+                    <textarea name="mesaj" class="form-control" rows="10" id="mesaj"></textarea>
+                </div>
+                <input type="submit" class="btn btn-danger" style="width:150px;" value="Gönder">
+            </form>
+        </div>
+    </div>
+</section>

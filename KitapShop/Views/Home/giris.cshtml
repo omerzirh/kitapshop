@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "giris";
+    Layout = "~/Views/Shared/_kullaniciLayout.cshtml";
+}
+<div class="row asagiBosluk">
+    <div class=" col-md-5 col-sm-12" style="margin-left:150px">
+        <img src="~/img/logocim.jpg" height="100%" width="100%" />
+    </div>
+    <div class=" col-md-5 col-sm-12">
+        <form action="giris" method="post">
+            <h3 style="margin-left:10px;">ÜYE GİRİŞİ</h3>
+            <div class="imgcontainer">
+                <img src="~/img/img_avatar2.png" alt="Avatar" class="avatar" />
+            </div>
+
+            <div class="container-fluid">
+                
+                <label><b>Kullanıcı Adı</b></label>
+                <input type="text" placeholder="Kullanıcı Adı Giriniz" name="uname" required>
+
+                <label><b>Parola</b></label>
+                <input type="password" placeholder="Parola Giriniz" name="psw" required>
+
+                @Html.ValidationSummary()
+                <button type="submit">Giriş Yap</button>
+            </div>
+
+            <div class="container-fluid" style="background-color:#f1f1f1">
+                <a style="width:100%;" href="~/Home/kayitol" class="btn btn-info cancelbtn" role="button">HESABINIZ YOK MU?</a>
+
+            </div>
+        </form>
+    </div>
+</div>

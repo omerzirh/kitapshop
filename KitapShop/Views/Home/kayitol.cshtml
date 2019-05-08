@@ -1,0 +1,61 @@
+﻿@{ 
+    ViewBag.Title = "kayitol";
+    Layout = "~/Views/Shared/_kullaniciLayout.cshtml";
+}
+
+<div class="row asagiBosluk">
+    <div class=" col-md-5 col-sm-12" style="margin-left:150px; font-family:'Tekton Pro'; font-size:x-large; ">
+        <h4 style="font-size:30pt;">@KitapShop.Resources.lang.hakbas</h4>
+        <hr />
+        @KitapShop.Resources.lang.hak1<br />
+        @KitapShop.Resources.lang.hak2<br /><br />
+
+       @KitapShop.Resources.lang.hak3<br />
+        @KitapShop.Resources.lang.hak4<br /><br />
+
+        @KitapShop.Resources.lang.hak5<br />
+        @KitapShop.Resources.lang.hak6<br />
+        @KitapShop.Resources.lang.hak7<br /><br />
+
+        @KitapShop.Resources.lang.hak8<br />
+        @KitapShop.Resources.lang.hak9<br />
+
+    </div>
+    <div class=" col-md-5 col-sm-12">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <h3 style="color:red;">@ViewBag.Hata</h3>
+            <h3 style="color:red;">@ViewBag.message</h3>
+            @Html.AntiForgeryToken()
+            <h3 style="margin-left:10px; font-family:'Tekton Pro';">@KitapShop.Resources.lang.ucretsiz</h3>
+            <div class="container-fluid">
+                @Html.Label("ad", KitapShop.Resources.lang.ad)
+                @Html.TextBox("ad", null, new { placeholder = KitapShop.Resources.lang.adplace })
+
+
+                @Html.Label("soyad", KitapShop.Resources.lang.soyad)
+                @* <input type="text" placeholder="Soyadınızı Giriniz" name="soyad" />*@
+                @Html.TextBox("soyad", null, new { placeholder = KitapShop.Resources.lang.soyadplace })
+
+                @Html.Label("nick", KitapShop.Resources.lang.nickplace)
+                @Html.TextBox("nick", null, new { placeholder = KitapShop.Resources.lang.nickplace })
+
+                @Html.Label("parola", KitapShop.Resources.lang.parola)
+                @Html.TextBox("parola", null, new { placeholder = KitapShop.Resources.lang.parolaplace })
+
+                @Html.Label("mail", KitapShop.Resources.lang.mail)
+                @Html.TextBox("mail", null, new { placeholder = KitapShop.Resources.lang.mailplace })
+
+                @Html.Label("tel", KitapShop.Resources.lang.tel)
+                @Html.TextBox("tel", null, new { placeholder = KitapShop.Resources.lang.telplace })
+
+                @Html.Label("kayitfoto", KitapShop.Resources.lang.kayitfoto)
+                <input type="file" name="kayitfoto"/>
+
+                <b>@Html.ValidationSummary()</b>
+                <button type="submit">@KitapShop.Resources.lang.kayitol</button>
+               
+            </div>
+        }
+    </div>
+</div>

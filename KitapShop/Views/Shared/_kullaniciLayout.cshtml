@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>KitapShop</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/font.css" rel="stylesheet" />
+    <link href="~/Content/theme.css" rel="stylesheet" />
+    <link href="~/Content/giris.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar navbar-inverse ">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <img src="~/img/logocum.png" width="50px" height="50px" style="margin-right:100px;" />
+                <a class="navbar-brand" href="~/Home/Index">KİTAPSHOP</a>
+            </div>
+            <div class="collapse navbar-collapse right" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink(KitapShop.Resources.lang.Index, "Index", "Home")</li>
+                    <li>@Html.ActionLink(KitapShop.Resources.lang.Magaza, "Magaza", "Home")</li>
+                    <li>@Html.ActionLink(KitapShop.Resources.lang.hakkimizda, "hakkimizda", "Home")</li>
+                    <li>@Html.ActionLink(KitapShop.Resources.lang.iletisim, "iletisim", "Home")</li>
+                    <li>@Html.ActionLink(KitapShop.Resources.lang.language, "Index", "Language")</li>
+                    
+                    @{
+                        if (Session["Kid"] != null)
+                        {
+                            <li>@Html.ActionLink("Sepetim", "sepet", "Home")</li>
+                            if (Session["Rol"].ToString() == "admin")
+                            {
+                                <li>@Html.ActionLink("Admin Paneli", "Index", "Uyelers")</li>
+                            }
+                        }
+                    }
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="~/Home/kayitol"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="~/Home/giris"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        @RenderBody()
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

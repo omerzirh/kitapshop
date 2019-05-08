@@ -1,0 +1,67 @@
+﻿@model KitapShop.Models.Yorumlar
+
+@{
+    ViewBag.Title = "Sil";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+<h2>Sil</h2>
+
+<h3>Bunu silmek istediğinize emin misiniz?</h3>
+<div>
+    <h4>Yorumlar</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.y_ID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.y_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.uyeID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.uyeID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Uyeler.Nick)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Uyeler.Nick)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Yorum)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Yorum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.kitapID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.kitapID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.onay)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.onay)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Listeye geri dön", "Index")
+        </div>
+    }
+</div>

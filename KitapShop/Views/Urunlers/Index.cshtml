@@ -1,0 +1,98 @@
+﻿@model IEnumerable<KitapShop.Models.Urunler>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Ad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Yazar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cevirmen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Yayinevi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dil)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kapak)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sayfa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Foto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Baslik)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Aciklama)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fiyat)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Yazar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cevirmen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Yayinevi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dil)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kapak)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sayfa)
+        </td>
+        <td>
+            @{
+                var base64 = Convert.ToBase64String(item.Foto);
+                var imgsrc = string.Format("data:image/png;base64,{0}", base64);
+                <img src="@imgsrc" width="25px;" height="20px;" alt="">
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Baslik)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Aciklama)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fiyat)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id=item.ur_ID }) |
+            @Html.ActionLink("Detaylar", "Details", new { id=item.ur_ID }) |
+            @Html.ActionLink("Sil", "Delete", new { id=item.ur_ID })
+        </td>
+    </tr>
+}
+
+</table>

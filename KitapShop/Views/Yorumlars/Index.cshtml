@@ -1,0 +1,64 @@
+﻿@model IEnumerable<KitapShop.Models.Yorumlar>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Yeni Ekle", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.y_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.uyeID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Uyeler.Nick)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Yorum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.kitapID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.onay)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.y_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.uyeID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Uyeler.Nick)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Yorum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.kitapID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.onay)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id=item.y_ID }) |
+            @Html.ActionLink("Detaylar", "Details", new { id=item.y_ID }) |
+            @Html.ActionLink("Sil", "Delete", new { id=item.y_ID })
+        </td>
+    </tr>
+}
+
+</table>

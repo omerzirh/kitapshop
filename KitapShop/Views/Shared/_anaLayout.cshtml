@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>KitapShop</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+    <div id="preloader">
+        <div id="status">&nbsp;</div>
+    </div>
+    <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
+    <div class="container">
+        <header id="header">
+            <section id="navArea">
+                <nav class="navbar navbar-inverse" role="navigation">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav main_nav">
+                            <li>@Html.ActionLink(KitapShop.Resources.lang.Index, "Index","Home")</li>
+                            <li>@Html.ActionLink(KitapShop.Resources.lang.Magaza, "Magaza", "Home")</li>
+                            <li>@Html.ActionLink(KitapShop.Resources.lang.hakkimizda, "hakkimizda", "Home")</li>
+                            <li>@Html.ActionLink(KitapShop.Resources.lang.iletisim, "iletisim", "Home")</li>
+                            <li>@Html.ActionLink(KitapShop.Resources.lang.language, "Index", "Language")</li>
+                            @{
+                                if (Session["Kid"] != null)
+                                {
+                                    <li>@Html.ActionLink("Sepetim", "sepet")</li>
+                                    if (Session["Rol"].ToString() == "admin")
+                                    {
+                                        <li>@Html.ActionLink("Admin Paneli", "Index", "Uyelers")</li>
+                                    }
+                                }
+                            }
+                            
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            @{
+                                if (Session["Kid"] == null)
+                                {
+                                    <li><a href="~/Home/kayitol"><span class="glyphicon glyphicon-user"></span>@KitapShop.Resources.lang.signup</a></li>
+                                    <li><a href="~/Home/giris"><span class="glyphicon glyphicon-log-in"></span>@KitapShop.Resources.lang.login</a></li>
+                                }
+                                else
+                                {
+                                    <li><a>Hoşgeldin @Session["Kid"].ToString() !</a></li>
+                                    <li><a href="~/Home/cikis"><span style="color:#ffd800;" class="glyphicon glyphicon-log-out"></span> <b style="color:#ffd800;"> Çıkış</b></a></li>
+                                }
+                            }
+                            
+                            
+                        </ul>
+                    </div>
+                </nav>
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="header_bottom">
+                        <div class="logo_area"><a href="~/Home/Index" class="logo"><img src="~/img/logocum.png" alt="" width="120px;" height="120px;"></a></div>
+                    </div>
+                </div>
+            </section>
+
+        </header>
+
+        @RenderBody()
+
+        <footer id="footer">
+            <div class="footer_top">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4">
+                        <div class="footer_widget wow fadeInLeftBig">
+                            <h2>Gelistiriciler</h2>
+                            <div class="col-md-6 col-sm-12">
+                                <img class="img-circle" src="~/img/cahit.jpg" width="120px;" height="120px;" />
+                                <hr />
+                                <span><b>CAHIT TULUM</b></span>
+                                <div>tulum1997@hotmail.com</div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <img class="img-circle" src="~/img/omer.jpg" width="120px;" height="120px;" />
+                                <hr />
+                                <span><b>OMER ZIRH</b></span>
+                                <div>omerzirh@gmail.com</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-12">
+                        <div class="footer_widget wow fadeInRightBig">
+                            <h2>Contact</h2>
+                            <p>Herhangi bir konuda bizimle iletişime geçebilirsiniz.</p>
+                            <address>
+                                Sakarya Üniversitesi - Bilgisayar ve Bilişim Bilimleri Fakültesi No: 056173828212
+                            </address>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-12">
+                        <img src="~/img/logocum.png" width="250px;" height="250px;" />
+                    </div>
+                </div>
+            </div>
+            <div class="footer_bottom">
+                <p class="copyright">Copyright &copy; 2017 <a href="index.html">KitapShop</a></p>
+                <p class="developer">Developed By COWeb</p>
+            </div>
+        </footer>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,111 @@
+﻿@model KitapShop.Models.Urunler
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Urunler</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Yazar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Yazar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cevirmen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cevirmen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Yayinevi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Yayinevi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dil)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kapak)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kapak)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sayfa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sayfa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Foto)
+        </dt>
+
+        <dd>
+            @{
+                var base64 = Convert.ToBase64String(Model.Foto);
+                var imgsrc = string.Format("data:image/png;base64,{0}", base64);
+            }
+            <img src="@imgsrc" width="200px" height="250px" alt="" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Baslik)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Baslik)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Aciklama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aciklama)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fiyat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fiyat)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ur_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

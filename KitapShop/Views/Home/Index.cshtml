@@ -1,0 +1,162 @@
+﻿@model IEnumerable<KitapShop.Models.Urunler>
+@using KitapShop.Models;
+@{
+    ViewBag.Title = "KitapShop";
+    Layout = "~/Views/Shared/_anaLayout.cshtml";
+}
+
+<section id="newsSection">
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="latest_newsarea">
+                <span>En son cikan kitaplar</span>
+                <ul id="ticker01" class="news_sticker">
+                    @{
+                        foreach (var eleman in Model)
+                        {
+                            var base64 = Convert.ToBase64String(eleman.Foto);
+                            var imgsrc = string.Format("data:image/png;base64,{0}", base64);
+                            <li><a href="~/Home/Urun/?id=@eleman.ur_ID"><img src="@imgsrc" width="25px;" height="20px;" alt="">@eleman.Ad</a></li>
+                        }
+                    }
+                    
+                </ul>
+                <div class="social_area">
+                    <ul class="social_nav">
+                        <li class="facebook"><a href="www.facebook.com"></a></li>
+                        <li class="twitter"><a href="www.twitter.com"></a></li>
+                        <li class="flickr"><a href="www.flickr.com"></a></li>
+                        <li class="pinterest"><a href="www.pinterest.com"></a></li>
+                        <li class="googleplus"><a href="www.google.com"></a></li>
+                        <li class="vimeo"><a href="www.vimeo.com"></a></li>
+                        <li class="youtube"><a href="www.youtube.com"></a></li>
+                        <li class="mail"><a href="www.gmail.com"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="sliderSection">
+    <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-8">
+            <div class="slick_slider">
+                @foreach (var eleman in Model)
+                {
+                    <div class="single_iteam">
+                        @{ 
+                            var base64 = Convert.ToBase64String(eleman.Foto);
+                            var imgsrc = string.Format("data:image/png;base64,{0}", base64);
+                        }
+                        <a href="~/Home/Urun/?id=@eleman.ur_ID"> <img src="@imgsrc" alt=""></a>
+                        <div class="slider_article">
+                            <h2><a class="slider_tittle" href="#">@eleman.Ad</a></h2>
+                            <p>@eleman.Aciklama</p>
+                        </div>
+                    </div>
+                            }
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+            <div class="latest_post">
+                <h2><span>En Cok Satanlar</span></h2>
+                <div class="latest_post_container">
+                    <div id="prev-button"><i class="fa fa-chevron-up"></i></div>
+                    <ul class="latest_postnav">
+                        @{
+                            var encok = Model.OrderByDescending(x => x.ur_ID).Take(5).ToList();
+                            foreach (var eleman in encok)
+                            {
+                                <li>
+                                    <div class="media">
+                                        @{
+                                            var base64 = Convert.ToBase64String(eleman.Foto);
+                                            var imgsrc = string.Format("data:image/png;base64,{0}", base64);
+                                        }
+                                        <a href="~/Home/Urun/?id=@eleman.ur_ID" class="media-left"> <img alt="" src="@imgsrc" width="72px;" height="72px;"> </a>
+                                        <div class="media-body"> <a href="#" class="catg_title">@eleman.Yazar - @eleman.Ad</a> </div>
+                                    </div>
+                                </li>
+                                            }
+                         }
+                    </ul>
+                    <div id="next-button"><i class="fa  fa-chevron-down"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="contentSection">
+    <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-8">
+            <div class="left_content">
+                <div class="single_post_content">
+                    <h2><span>Sizin Icin Sectiklerimiz</span></h2>
+                    <div class="single_post_content_left">
+                        <ul class="business_catgnav  wow fadeInDown">
+                            @{ 
+                                var ilkeleman = Model.OrderByDescending(x => x.ur_ID).Take(1).ToList();
+                                foreach (var eleman in ilkeleman)
+                                {
+                                    var elemankod = Convert.ToBase64String(eleman.Foto);
+                                    var elemanFoto = string.Format("data:image/png;base64,{0}", elemankod);
+                                    <li>
+                                        <figure class="bsbig_fig">
+                                            <a href="~/Home/Urun/?id=@eleman.ur_ID" class="featured_img"> <img alt="" src="@elemanFoto" height="200px;"> <span class="overlay"></span> </a>
+                                            <figcaption> <a href="~/Home/Urun/?id=@eleman.ur_ID">@eleman.Baslik</a> </figcaption>
+                                            <p>@eleman.Aciklama</p>
+                                        </figure>
+                                    </li>
+                                }
+                                }
+                        </ul>
+                    </div>
+                    <div class="single_post_content_right">
+                        <ul class="spost_nav">
+                            @{
+                                var sizinsectik = Model.Take(5).ToList();
+                                foreach (var eleman in sizinsectik)
+                                {
+                                    <li>
+                                        <div class="media wow fadeInDown">
+                                            @{
+                                                var base64 = Convert.ToBase64String(eleman.Foto);
+                                                var imgsrc = string.Format("data:image/png;base64,{0}", base64);
+                                            }
+                                            <a href="~/Home/Urun/?id=@eleman.ur_ID" class="media-left"> <img alt="" src="@imgsrc"> </a>
+                                            <div class="media-body"> <a href="#" class="catg_title">@eleman.Baslik</a></div>
+                                        </div>
+                                    </li>
+                                 }
+                              }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+            <aside class="right_content">
+                <div class="single_sidebar">
+                    <h2><span>En Aktif Kullanicilar</span></h2>
+                    <ul class="spost_nav">
+                        @{ 
+                            KitapShopEntities db = new KitapShopEntities();
+                            var uyeListesi = db.Uyeler.Take(4).ToList();
+                            foreach (var eleman in uyeListesi)
+                            {
+                                var base64 = Convert.ToBase64String(eleman.Foto);
+                                var imgsrc = string.Format("data:image/png;base64,{0}", base64);
+                                <li>
+                                    <div class="media wow fadeInDown">
+                                        <div class="media-left"><img alt="" src="@imgsrc" width="90px" height="70px"></div>
+                                        <div class="media-body"> <span class="catg_title"><b>@eleman.Ad @eleman.Soyad</b></span> </div>
+                                </div>
+                            </li>
+                             }
+                          }
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>
